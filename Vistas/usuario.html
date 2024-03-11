@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud</title>
+    <link rel="shortcout icon" href="Img/logo-simbolo-mc_.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    
+    <h1 class="text-black text-3xl m-5 bg-indigo-200 py-3 text-center rounded-xl max-w-xl items-center space-x-4 shadow-lg shadow-indigo-600/40">Hola <span id="nombreUsuario" class="text-slate-50 m-3 bg-violet-400 px-5 rounded-tl-lg rounded-br-lg hover:text-4xl ease-in duration-300">
+    </span>,Bienvenido a Pagswebs</h1>
+
+
+    <article class="flex grid grid-cols-2">
+
+     <section class="bg-blue-200 h-auto p-3 m-5 border rounded-xl shadow-lg shadow-indigo-600/40">
+        <h1 class="text-3xl m-2 p-4 text-center">Seleccione su servicio</h1>
+    <input id="mostrarF" type="button" value="Servicios" class="ml-10 border border-black py-1 px-2 text-center rounded-tl-xl rounded-tr-lg rounded-bl-lg rounded-br-xl bg-emerald-200 hover:bg-emerald-400 ease-in duration-500 cursor-pointer">
+    <div id="lista" class="">
+        <form id="selecFr">
+                <ul id="Lista_serv" class="font-mono text-lg m-4 p-2 accent-rose-300"></ul>
+                <input type="datetime-local" id="fechaH" name="fechaH" class="ml-16 border border-black m-2 p-1 rounded-lg">
+                <input type="submit" value="gardar" class="rounded-xl border border-black px-2 py-1 cursor-pointer bg-emerald-200 hover:bg-emerald-400 ease-in duration-500">
+        </form>
+    </div>
+    </section>
+
+    <section class="bg-indigo-200 m-5 h-auto p-3 rounded-xl shadow-lg shadow-indigo-600/40">
+        <h1 class="text-3xl m-2 p-1 text-center">Solicitudes realizadas</h1>
+        <input type="button" value="Mostrar solicitudes" name="mostrarSoli" id="mostrarSoli" class="border border-black ml-10 mt-6 p-3 bg-purple-200 hover:bg-fuchsia-300 ease-in duration-500 cursor-pointer rounded-tl-xl rounded-tr-lg rounded-bl-lg rounded-br-xl">
+            <div id="solicitudesSer" name="solicitudesSer">
+            <ul id="Solicitudes" class="font-mono text-lg m-4 p-2 accent-rose-300 "></ul> 
+             
+                <input type="button" value="Eliminar Solicitud" id="Eliminarsoli" name="Eliminarsoli" class="border border-black p-2 m-2 bg-purple-200 hover:bg-fuchsia-300 ease-in duration-500 cursor-pointer rounded-tl-xl rounded-tr-lg rounded-bl-lg rounded-br-xl">
+        
+            </div>
+    </section>
+   <input class="border border-black p-2 cursor-pointer rounded-tl-xl rounded-tr-lg rounded-bl-lg rounded-br-xl transition duration-300 hover:ease-in bg-blue-400 hover:bg-blue-100 mx-auto" type="button" value="Cerrar Sesion" id="cerrSesi" name="cerrSesi">
+</article>
+
+<script>
+    document.addEventListener('DOMContentLoaded',()=>{
+
+            const xhrnombreusu = new XMLHttpRequest();
+
+            xhrnombreusu.open('post','/imprimir-usuario',true);
+            xhrnombreusu.onreadystatechange=function(){
+                if(xhrnombreusu.readyState===4){
+                    if(xhrnombreusu.status === 200){
+                        const usuario = JSON.parse(xhrnombreusu.responseText);
+                        document.getElementById('nombreUsuario').textContent = usuario.nombre;
+                    }
+                    else{
+                        console.error('Error al entrar al servidor');
+                    }
+                }
+            };
+            xhrnombreusu.send();
+
+       const lista = document.getElementById('lista');
+       const selecFr = document.getElementById('selecFr');
+       const mostrarF = document.getElementById('mostrarF');
+       const Lista_serv = document.getElementById('Lista_serv');
+
+       const mostrarSoli = document.getElementById('mostrarSoli');
+       const Solicitudes = document.getElementById('Solicitudes');
+       const Eliminarsoli = document.getElementById('Eliminarsoli');
+       const solicitudesSer = document.getElementById('solicitudesSer');
+       const solics = document.getElementById('solics');
+       const cerrSesi = document.getElementById('cerrSesi');
+
+        
+
+        //MOSTRAR SERVICIOS
+       mostrarF.addEventListener('click',()=>{
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST','/Servicios-usuario',true);
+            xhr.setRequestHeader('Content-type','application/json');
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState===4){
+                    if(xhr.status === 200){
+                        const data = JSON.parse(xhr.responseText);
+                       
+                        Lista_serv.innerHTML = data.servicios.map(servicios=>`
+                        <li><label><input type="checkbox" name="servicios" value="${servicios}">${servicios}</label></li>
+                        `).join('');
+                        lista.style.display='block';               
+                }
+                else{
+                    console.error('Error al entrar al servidor');
+                }
+            }
+        };
+        xhr.send(JSON.stringify());
+       });
+
+       //GUARDAR SERVICIOS EN SOLICITUES
+       selecFr.addEventListener('submit', async (event)=>{
+            event.preventDefault();
+
+            const servicias = Array.from(selecFr.elements['servicios']).filter(checkbox=>checkbox.checked).map(checkbox=>checkbox.value);
+            const fechaH = selecFr.elements['fechaH'].value;
+            const xhrsave = new XMLHttpRequest();
+            xhrsave.open('POST','/guardad-servicios',true);
+            xhrsave.setRequestHeader('Content-type','application/json');
+            xhrsave.onreadystatechange = function(){
+                if(xhrsave.readyState===4){
+                    if(xhrsave.status === 200){
+                        alert("Su solicitud fue cargada")
+                        window.location.reload();          
+                }
+                else{
+                    console.error('Error al gardar los datos');
+                }
+            }
+        };
+        xhrsave.send(JSON.stringify({servicios: servicias, fechaH: fechaH}));
+        });
+
+         //MOSTRAR LAS SOLICITUDES REALIZADAS
+        mostrarSoli.addEventListener('click',()=>{
+            const xhrmos = new XMLHttpRequest();
+            xhrmos.open('POST','/Solicitudes-usuario',true);
+            xhrmos.setRequestHeader('Content-type','application/json');
+            xhrmos.onreadystatechange = function(){
+                if(xhrmos.readyState===4){
+                    if(xhrmos.status === 200){
+                        const data = JSON.parse(xhrmos.responseText);
+                        Solicitudes.innerHTML = data.solicitud.map((solicitud)=>`
+                        <li><input type="checkbox" value="${solicitud}">${solicitud[0]}<p>-</p>${solicitud[1]}</li>
+                        `).join('');
+                        lista.style.display='block';                    
+                }
+                else{
+                    console.error('Error al entrar al servidor');
+                }
+            }
+        };
+        xhrmos.send(JSON.stringify({}));
+       });
+
+       //BORRAR SOLICITUDES GUARDADAS
+       Eliminarsoli.addEventListener('click',async (event)=>{
+            event.preventDefault();
+            const solicituas = Array.from(Solicitudes.querySelectorAll('li input[type="checkbox"]')).filter(checkbox=>checkbox.checked).map(checkbox=>checkbox.value);
+            const xhrelisol = new XMLHttpRequest();
+            xhrelisol.open('POST','/eliminar-solicitudes',true);
+            xhrelisol.setRequestHeader('Content-type','application/json');
+            xhrelisol.onreadystatechange = function(){
+                if(xhrelisol.readyState===4){
+                    if(xhrelisol.status === 200){
+                        console.log('Solicitud eliminada');
+                                       
+                }
+                else{
+                    console.error('Error al borrar la solicitud');
+                }
+            }
+        };
+        xhrelisol.send(JSON.stringify({solicitudes: solicituas}));
+        }); 
+
+        cerrSesi.addEventListener("click", () =>{
+            const xhrcerrar = new XMLHttpRequest();
+            xhrcerrar.open('POST','/Cerrar-cession',true);
+            xhrcerrar.onreadystatechange = function(){
+                if(xhrcerrar.readyState===4){
+                    if(xhrcerrar.status === 200){
+
+                        window.location.href='http://127.0.0.1:5500/Vistas/Index.html';
+
+                    }
+                    else{
+                    console.error('Error al borrar la solicitud');
+                }   
+                }          
+            }
+            xhrcerrar.send();
+        });
+        window.onload=function(){
+            window.history.forward();
+        };
+        window.onpageshow = function(event){
+            if(event.persisted){
+                window.location.reload();
+            }
+        }
+    });
+    
+</script>
+
+<!-- <script>
+    document.getElementById('nombreUsuario').innerText= getParameterByName('usuario');
+    function getParameterByName(name){
+        const url = new URL(window.location.href);
+        return url.searchParams.get(name);
+    };
+</script> -->
+</body>
+</html>

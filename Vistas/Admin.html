@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcout icon" href="Img/logo-simbolo-mc_.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>CRUD</title>
+</head>
+<body class="bg-stone-100">
+    <h1 class="text-black text-3xl m-5 bg-indigo-200 py-3 text-center rounded-xl max-w-xl items-center space-x-4 shadow-lg shadow-indigo-600/40">Hola <span id="administrador" class="text-slate-50 m-3 bg-violet-400 px-5 rounded-tl-lg rounded-br-lg hover:text-4xl ease-in duration-300"></span></h1>
+    <p class="m-4 p-3 text-center text-3xl">Estos son los respectivos registros</p>
+
+    <main>
+        <article class="flex grid grid-cols-1 sm:grid-cols-3">
+
+<!-- /---------------------------------------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        Seccion para la actualizacion y eliminacion de los registros de usuario
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------------------------------------/ -->
+            
+            <section class="bg-yellow-200 m-4 rounded-xl shadow-lg shadow-orange-200">
+                <h1 class="m-2 p-2 text-xl bg-amber-200 text-center w-auto mx-auto rounded-3xl">Usuarios</h1>
+                <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-orange-100 text-zinc-500 w-auto" type="button" id="TDusu" name="TDusu" value="Mostrar Usuarios Registrados">
+                    <div id="UsuariosREg" class="ml-3">
+                        <ul id="Lista_usuario" class="text-lg px-3 space-y-2"></ul>
+                        <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-orange-100 text-zinc-500" type="button" value="Eliminar Registro" id="ElimRegis">
+                        
+                    </div>
+                    <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-orange-100 text-zinc-500" type="button" value="Actualizar Registro" id="ActuRegis">
+                    <!-- FORMULARIO PARA LA ACTUALIZACION DE LOS REGISTROS DE USUARIO -->
+                    <div id="FormActualizar">
+                        <form id="Actuali" name="Actuali" action="http://localhost:3000/Actualizacion-registros" method="post" style="display: none;">
+                            <div id="todoActu">
+                                <h1 class="m-2 p-2 text-xl bg-amber-200 text-center w-80 mx-auto rounded-3xl">Ingrese los datos a actualizar</h1>
+                                <div class="flex flex-col m-5 p-2">
+                                    <label class="text-lg py-2 mx-auto">Nombre</label>
+                                    <input class="mx-auto w-64 border border-zinc-500 rounded-lg" type="text" name="nombre">
+                                </div>
+                                <div class="flex flex-col m-5 p-2">
+                                    <label class="text-lg py-2 mx-auto">Manzana</label>
+                                    <input class="mx-auto w-64 border border-zinc-500 rounded-lg" type="tel" name="codigo_m">
+                                </div>
+                                <div class="flex flex-col m-5 p-2">
+                                    <label class="text-lg py-2 mx-auto">Documento de Identidad</label>
+                                    <input class="mx-auto w-64 border border-zinc-500 rounded-lg" type="tel" name="documento">
+                                </div>
+                                <div class="flex flex-col m-5 p-2">
+                                    <label class="text-lg py-2 mx-auto">Rol</label>
+                                    <input class="mx-auto w-64 border border-zinc-500 rounded-lg" type="text" name="rol">
+                                </div>
+                                <div class="flex flex-col m-5 p-2">
+                                    <label class="text-lg py-2 mx-auto">Tipo de documento</label>
+                                    <select class="mx-auto w-64 border border-zinc-500 rounded-lg" name="tipo_documento" required>
+                                        <option>Cedula de Ciudadania</option>
+                                        <option selected>Tarjeta de Identidad</option>
+                                        <option>Cedula Extranjera</option>
+                                        <option>Documento Extranjero</option>
+                                        <option>Pasaporte</option>
+                                        <option>Registro Civil</option>
+                                </div>
+                            </div>
+                            <input class="m-7 p-1 border border-zinc-500 rounded-lg text-lg bg-orange-100 text-zinc-500 mx-auto w-48" type="submit" value="Actualizar" id="ActuRegi" name="ActuRegi">
+                        </form>
+                </div>
+            </section>
+
+<!-- /---------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+            SECCION DE REGISTRO DE MANZANAS
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------/ -->
+
+            <section class="bg-blue-200 m-4 rounded-xl shadow-lg shadow-indigo-200">
+                <h1 class="m-2 p-2 text-xl bg-indigo-200 text-center w-auto mx-auto rounded-3xl">Registrar Manzanas</h1>
+                <form action="http://localhost:3000/registro-manzanas" id="Registrar_M" method="post" >
+                    <div class="flex flex-col m-5 p-2">
+                        <label for="" class="text-lg py-2">Localidad de la Manzana</label>
+                        <input class="border border-zinc-500 rounded-lg" type="text" id="nombre_m" name="nombre_m">
+                    </div>
+                    <div class="flex flex-col m-5 p-2">
+                        <label for="" class="text-lg py-2">Direccion de la Manzana</label>
+                        <input class="border border-zinc-500 rounded-lg" type="text" id="direccion_m" name="direccion_m">
+                    </div>
+                    <div class="flex flex-col m-5 p-2">
+                        <label for="" class="text-lg py-2">Munucipio de la Manzana</label>
+                        <input class="border border-zinc-500 rounded-lg" type="text" id="municipio_m" name="municipio_m">
+                    </div>
+                    <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-cyan-100 text-zinc-500" type="submit" name="EnviarFormM" id="EnviarFormM" value="Registar">
+                </form>
+
+                <!-- BOTON PARA MOSTRAR LAS MANZANAS REGISTRADAS -->
+                <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-cyan-100 text-zinc-500 w-auto" type="button" id="TDmanza" name="TDmanza" value="Mostrar Manzanas Registradas">
+                <!-- DONDE SE IMPRIMIRAN LAS MANZANAS REGISTRADAS -->
+                    <div id="ManzanasREg" class="">
+                        <ul id="Lista_manzanas" class="text-lg px-6 space-y-2"></ul>   
+                    </div>
+
+                    <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-cyan-100 text-zinc-500" type="button" value="Actualizar Registro" id="ActuRegisM">
+                    <!-- FORMULARIO PARA LA ACTUALIZACION DE LOS REGISTROS DE MANZANAS -->
+                    <div id="FormActualizarM">
+                        <form id="ActualiM" name="ActualiM" action="http://localhost:3000/Actualizacion-registros-manzanas" method="post" style="display: none;">
+                            <div id="todoActuM">
+                                <h1 class="m-2 p-2 text-xl bg-indigo-200 text-center w-80 mx-auto rounded-3xl">Ingrese los datos a actualizar</h1>
+                                <div class="flex flex-col m-5 p-2">
+                                    <label class="text-lg py-2">Localidad</label>
+                                    <input class="border border-zinc-500 rounded-lg" type="text" name="localidad_m">
+                                </div>
+                                <div class="flex flex-col m-5 p-2">
+                                    <label class="text-lg py-2">Direccion</label>
+                                    <input class="border border-zinc-500 rounded-lg" type="tel" name="direccion_m">
+                                </div>
+                                <div class="flex flex-col m-5 p-2">
+                                    <label class="text-lg py-2">Munucipio</label>
+                                    <input class="border border-zinc-500 rounded-lg" type="tel" name="municipio_m">
+                                </div>
+                            </div> 
+                            <input class="p-1 border border-zinc-500 rounded-lg text-lg bg-cyan-100 text-zinc-500 w-48  m-3" type="submit" value="Actualizar" id="ActuRegiM" name="ActuRegiM">
+                        </form>
+                    </div>           
+            </section>
+
+<!-- /---------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+            SECCION PARA EL REGISTRO DE SERVICIOS
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------/ -->
+
+                <section class="bg-red-200 m-4 rounded-xl shadow-lg shadow-rose-200">
+                    <h1 class="m-2 p-2 text-xl bg-rose-200 text-center w-auto mx-auto rounded-3xl">Registrar Servicios</h1>
+                    <form action="http://localhost:3000/registro-servicios" id="Registrar_S" method="post">
+                        <div class="flex flex-col m-5 p-2">
+                            <label for="" class="text-lg py-2">Nombre del Servicio</label>
+                            <input class="border border-zinc-500 rounded-lg" type="text" id="nombre_s" name="nombre_s">
+                        </div>
+                        <div class="flex flex-col m-5 p-2">
+                            <label for="" class="text-lg py-2">Tipo de servicio</label>
+                            <input class="border border-zinc-500 rounded-lg" type="text" id="tipo_s" name="tipo_s">
+                        </div>
+                        <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-pink-100 text-zinc-500" type="submit" name="EnviarFormM" id="EnviarFormM" value="Registar">
+                    </form>
+
+
+                    <!-- BOTON PARA MOSTRAR LOS SERVICIOS REGISTRADOS -->
+                <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-pink-100 text-zinc-500 w-auto" type="button" id="TDservi" name="TDservi" value="Mostrar Servicio Registrados">
+
+                    <!-- SE IMPRIMIRAN LOS RESPECTIVOS SERVICIOS -->
+                <div id="ServiciosREg" class="">
+                    <ul id="Lista_serviciosxd" class="text-lg px-6 space-y-2"></ul> 
+                    <!-- BOTON PARA LA ELIMINACION DE LOS SERVICIOS SELECCIONADOS -->
+                    <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-pink-100 text-zinc-500" type="button" value="Eliminar Registro" id="ElimRegisS">  
+                </div>
+                <input class="m-5 p-1 border border-zinc-500 rounded-lg text-lg bg-pink-100 text-zinc-500" type="button" value="Actualizar Registro" id="ActuRegisS">
+                <!-- FORMULARIO PARA LA ACTUALIZACION DE LOS REGISTROS DE MANZANAS -->
+                <div id="FormActualizarS">
+                    <form id="ActualiS" name="ActualiS" action="http://localhost:3000/Actualizacion-registros-servicios" method="post" style="display: none;">
+                        <div id="todoActuS">
+                            <h1 class="m-2 p-2 text-xl bg-rose-200 text-center w-80 mx-auto rounded-3xl">Ingrese los datos a actualizar</h1>
+                            <div class="flex flex-col m-5 p-2">
+                                <label class="text-lg py-2">Nombre del servicio</label>
+                                <input class="border border-zinc-500 rounded-lg" type="text" name="nombre_s">
+                            </div>
+                            <div class="flex flex-col m-5 p-2">
+                                <label class="text-lg py-2">Tipo de servicio</label>
+                                <input class="border border-zinc-500 rounded-lg" type="tel" name="tipo_s">
+                            </div>
+                        </div> 
+                        <input class="p-1 border border-zinc-500 rounded-lg text-lg bg-pink-100 text-zinc-500 w-48  m-3" type="submit" value="Actualizar" id="ActuRegiS" name="ActuRegiS">
+                    </form>
+                </div>
+                    </section>
+
+<!-- /---------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+            BOTON DIRIGIDO AL CIERRE DE SESION
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------/ -->
+
+                    <input class="border border-black p-2 cursor-pointer rounded-tl-xl rounded-tr-lg rounded-bl-lg rounded-br-xl transition duration-300 hover:ease-in bg-blue-400 hover:bg-blue-100 mx-auto m-4" type="button" value="Cerrar Sesion" id="cerrSesi" name="cerrSesi">
+        </article>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+
+/*-----------------------------------------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+            METODO PARA IDENTIFICAR E IMPRIMIR EL ADMINISTRADOR CORRESONDIENTE 
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+-----------------------------------------------------------------------------------------*/
+            const xhrnombreadmi = new XMLHttpRequest();
+            xhrnombreadmi.open('post','/imprimir-admin',true);
+            xhrnombreadmi.onreadystatechange=function(){
+                    if(xhrnombreadmi.readyState===4){
+                        if(xhrnombreadmi.status === 200){
+                                const usuario = JSON.parse(xhrnombreadmi.responseText);
+                                document.getElementById('administrador').textContent = usuario.nombre;
+                        }
+                        else{
+                            console.error('Error al entrar al servidor');
+                        }
+                }
+                };
+            xhrnombreadmi.send();
+
+
+/*-----------------------------------------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                    ITEMS PERTENECIENTES A LOS REGISTROS DE USUARIO 
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+-----------------------------------------------------------------------------------------*/
+
+            //ITEMS PARA EL REGUSTRO DE USUARIOS
+                const TDusu = document.getElementById('TDusu');
+                const UsuariosREg = document.getElementById('UsuariosREg');
+                const Lista_usuario = document.getElementById('Lista_usuario');
+                const ElimRegis = document.getElementById('ElimRegis');
+                const ActuRegis = document.getElementById('ActuRegis');
+
+             //ITEMS PARA LA ACTUALIZACION DE DATOS
+                const Actuali = document.getElementById('Actuali');
+                const NombreUsu = document.getElementById('NombreUsu');
+                const opcionesUSU = document.getElementById('opcionesUSU');
+                const ActuRegi = document.getElementById('ActuRegi');
+                const todoActu = document.getElementById('todoActu');
+                const IDSU = document.getElementById('IDSU');
+
+/*-----------------------------------------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                    ITEMS PERTENECIENTES A LOS REGISTROS DE MANZANAS 
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+-----------------------------------------------------------------------------------------*/
+
+            //ITEMS PARA EL REGISTRO DE MANZANAS
+                const TDmanza = document.getElementById('TDmanza');
+                const ManzanasREg = document.getElementById('ManzanasREg');
+                const Lista_manzanas = document.getElementById('Lista_manzanas');
+                const ActuRegisM = document.getElementById('ActuRegisM'); 
+
+            //ITEMS PARA LA ACTUALIZACION DE MANZANAS
+                const FormActualizarM = document.getElementById('FormActualizarM');
+                const ActualiM = document.getElementById('ActualiM');
+
+/*-----------------------------------------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                    ITEMS PERTENECIENTES A LOS REGISTROS DE SERVICIOS 
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+-----------------------------------------------------------------------------------------*/
+
+                //ITEMS PARA EL REGISTRO DE MANZANAS
+                const TDservi = document.getElementById('TDservi');
+                const ServiciosREg = document.getElementById('ServiciosREg');
+                const Lista_serviciosxd = document.getElementById('Lista_serviciosxd');
+                const ElimRegisS = document.getElementById('ElimRegisS');
+                const ActuRegisS = document.getElementById('ActuRegisS');
+
+                //ITEMS PARA LA ACTUALIZACION DE MANZANAS
+                const FormActualizarS = document.getElementById('FormActualizarS');
+                const ActualiS = document.getElementById('ActualiS');
+/*-----------------------------------------------------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                    ITEMS PERTENECIENTES AL CIERRE DE SESION
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+-----------------------------------------------------------------------------------------*/
+            //ITEM PARA CERRAR SESION
+            const cerrSesi = document.getElementById('cerrSesi');
+
+/*----------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        METODOS PARA EL APARTADO DE USUARIOS REGISTRADOS
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------------*/
+
+            //MOSTRAR USUARIOS REGISTRADOS 
+            TDusu.addEventListener('click',async (event)=>{
+                event.preventDefault();
+            const xhrUSU = new XMLHttpRequest();
+            xhrUSU.open('POST','/Registros-usuario',true);
+            xhrUSU.setRequestHeader('Content-type','application/json');
+            xhrUSU.onreadystatechange = function(){
+                if(xhrUSU.readyState===4){
+                    if(xhrUSU.status === 200){
+                        const datx = JSON.parse(xhrUSU.responseText);
+                        Lista_usuario.innerHTML = datx.registros.map(registros=>`
+                        <li><label><input type="checkbox" name="registros" value="${registros}">${registros[0]} - ${registros[1]} - ${registros[2]} - ${registros[3]} - ${registros[4]}- ${registros[5]}</label></li>
+                        `).join('');
+                                     
+                }
+                else{
+                    console.error('Error al entrar al servidor');
+                }
+            }
+        };
+        xhrUSU.send(JSON.stringify());
+       });
+
+       //ELIMINAR REGISTRO SELECCIONADO
+       ElimRegis.addEventListener('click',async (event)=>{
+            event.preventDefault();
+            const RegistrasELim = Array.from(Lista_usuario.querySelectorAll('li input[type="checkbox"]')).filter(text=>text.checked).map(text=>text.value);
+            const xhreliregis = new XMLHttpRequest();
+            xhreliregis.open('POST','/eliminar-registro',true);
+            xhreliregis.setRequestHeader('Content-type','application/json');
+            xhreliregis.onreadystatechange = function(){
+                if(xhreliregis.readyState===4){
+                    if(xhreliregis.status === 200){
+                        console.log('Solicitud eliminada');
+                                       
+                }
+                else{
+                    console.error('Error al borrar la solicitud');
+                }
+            }
+        };
+        xhreliregis.send(JSON.stringify({eliminar: RegistrasELim}));
+        });
+
+        //OBTENER LA ID DE LOS USUARIOS
+        ActuRegis.addEventListener('click', async (event)=>{
+            event.preventDefault();
+
+            const usuarioAID = Array.from(Lista_usuario.querySelectorAll('li input[type="checkbox"]')).filter(text=>text.checked).map(text=>text.value);
+            const xhrUPdate = new XMLHttpRequest();
+            xhrUPdate.open('POST','/Opciones-usuario',true);
+            xhrUPdate.setRequestHeader('Content-type','application/json');
+            xhrUPdate.onreadystatechange = function(){
+                if(xhrUPdate.readyState===4){
+                    if(xhrUPdate.status === 200){
+                        console.log('Datos guardados');
+                        Actuali.style.display = "block";       
+                }
+                else{
+                    console.error('Error al gardar los datos');
+                }
+            }
+        };
+        xhrUPdate.send(JSON.stringify({usuario: usuarioAID}));
+        });
+
+        //ACTUALIZAR LOS USUARIOS SELECCIONADOS
+        FormActualizar.addEventListener('submit', async (event)=>{
+            event.preventDefault();
+
+            const usuarioLID = Array.from(Lista_usuario.querySelectorAll('li input[type="checkbox"]')).filter(text=>text.checked).map(text=>text.value);
+            const nombre =  Actuali.elements['nombre'].value;
+            const tipo_documento =  Actuali.elements['tipo_documento'].value;
+            const documento =  Actuali.elements['documento'].value;
+            const codigo_m =  Actuali.elements['codigo_m'].value;
+            const rol =  Actuali.elements['rol'].value;
+            const xhrUPdatex = new XMLHttpRequest();
+            xhrUPdatex.open('POST','/Actualizacion-registros',true);
+            xhrUPdatex.setRequestHeader('Content-type','application/json');
+            xhrUPdatex.onreadystatechange = function(){
+                if(xhrUPdatex.readyState===4){
+                    if(xhrUPdatex.status === 200){
+                        console.log('Datos guardados');
+                        Actuali.style.display = "block";       
+                }
+                else{
+                    console.error('Error al gardar los datos');
+                }
+            }
+        };
+        xhrUPdatex.send(JSON.stringify({IDUSU: usuarioLID, nombre: nombre, tipo_documento: tipo_documento, documento: documento, codigo_m: codigo_m, rol:rol}));
+        });
+
+/*----------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        METODOS PARA EL APARTADO DE MANZANAS REGISTRADAS
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------------*/
+
+//MOSTRAR MANZANAS REGISTRADAS 
+TDmanza.addEventListener('click',async (event)=>{
+                event.preventDefault();
+            const xhrMAN = new XMLHttpRequest();
+            xhrMAN.open('POST','/Registros-manzanas',true);
+            xhrMAN.setRequestHeader('Content-type','application/json');
+            xhrMAN.onreadystatechange = function(){
+                if(xhrMAN.readyState===4){
+                    if(xhrMAN.status === 200){
+                        const datM = JSON.parse(xhrMAN.responseText);
+                        Lista_manzanas.innerHTML = datM.registrosM.map(registrosM=>`
+                        <li><label><input type="checkbox" name="registros" value="${registrosM}">${registrosM[0]} - ${registrosM[1]} - ${registrosM[2]} - ${registrosM[3]}</label></li>
+                        `).join('');
+                                     
+                }
+                else{
+                    console.error('Error al entrar al servidor');
+                }
+            }
+        };
+        xhrMAN.send(JSON.stringify());
+       });
+       
+//OBTENER LA ID DE LAS MANZANAS
+ActuRegisM.addEventListener('click', async (event)=>{
+            event.preventDefault();
+
+            const manzanasAID = Array.from(Lista_manzanas.querySelectorAll('li input[type="checkbox"]')).filter(text=>text.checked).map(text=>text.value);
+            const xhrUPdateM = new XMLHttpRequest();
+            xhrUPdateM.open('POST','/Opciones-manzanas',true);
+            xhrUPdateM.setRequestHeader('Content-type','application/json');
+            xhrUPdateM.onreadystatechange = function(){
+                if(xhrUPdateM.readyState===4){
+                    if(xhrUPdateM.status === 200){
+                        console.log('Datos guardados');
+                        ActualiM.style.display = "block";       
+                }
+                else{
+                    console.error('Error al gardar los datos');
+                }
+            }
+        };
+        xhrUPdateM.send(JSON.stringify({manzanas: manzanasAID}));
+        });
+
+//ACTUALIZAR LAS MANZANAS SELECCIONADAS
+FormActualizarM.addEventListener('submit', async (event)=>{
+            event.preventDefault();
+
+            const manzanaLID = Array.from(Lista_manzanas.querySelectorAll('li input[type="checkbox"]')).filter(text=>text.checked).map(text=>text.value);
+            console.log(manzanaLID)
+            const localidad_m =  ActualiM.elements['localidad_m'].value;
+            const direccion_m =  ActualiM.elements['direccion_m'].value;
+            const municipio_m =  ActualiM.elements['municipio_m'].value;
+            const xhrUPdateM = new XMLHttpRequest();
+            xhrUPdateM.open('POST','/Actualizacion-registros-manzanas',true);
+            xhrUPdateM.setRequestHeader('Content-type','application/json');
+            xhrUPdateM.onreadystatechange = function(){
+                if(xhrUPdateM.readyState===4){
+                    if(xhrUPdateM.status === 200){
+                        console.log('Datos guardados');
+                        ActualiM.style.display = "block";       
+                }
+                else{
+                    console.error('Error al gardar los datos');
+                }
+            }
+        };
+        xhrUPdateM.send(JSON.stringify({IDMAN: manzanaLID, localidad_m: localidad_m, direccion_m: direccion_m, municipio_m: municipio_m}));
+        });
+
+/*----------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        METODOS PARA EL APARTADO DE SERVICIOS REGISTRADOS
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------------*/
+
+//MOSTRAR SERVICIOS REGISTRADAS 
+TDservi.addEventListener('click',async (event)=>{
+                event.preventDefault();
+            const xhrSER = new XMLHttpRequest();
+            xhrSER.open('POST','/Registros-servicios',true);
+            xhrSER.setRequestHeader('Content-type','application/json');
+            xhrSER.onreadystatechange = function(){
+                if(xhrSER.readyState===4){
+                    if(xhrSER.status === 200){
+                        const datS = JSON.parse(xhrSER.responseText);
+                        Lista_serviciosxd.innerHTML = datS.registrosS.map(registrosS=>`
+                        <li><label><input type="checkbox" name="registros" value="${registrosS}">${registrosS[0]} - ${registrosS[1]} - ${registrosS[2]}</label></li>
+                        `).join('');
+                                     
+                }
+                else{
+                    console.error('Error al entrar al servidor');
+                }
+            }
+        };
+        xhrSER.send(JSON.stringify());
+       });
+
+//ELIMINAR REGISTRO SELECCIONADO
+    ElimRegisS.addEventListener('click',async (event)=>{
+            event.preventDefault();
+            const RegistrasELimS = Array.from(Lista_serviciosxd.querySelectorAll('li input[type="checkbox"]')).filter(text=>text.checked).map(text=>text.value);
+            const xhreliregisS = new XMLHttpRequest();
+            xhreliregisS.open('POST','/eliminar-registro-servicios',true);
+            xhreliregisS.setRequestHeader('Content-type','application/json');
+            xhreliregisS.onreadystatechange = function(){
+                if(xhreliregisS.readyState===4){
+                    if(xhreliregisS.status === 200){
+                        console.log('Solicitud eliminada');
+                                       
+                }
+                else{
+                    console.error('Error al borrar la solicitud');
+                }
+            }
+        };
+        xhreliregisS.send(JSON.stringify({eliminarS: RegistrasELimS}));
+        });
+
+//OBTENER LA ID DE LOS SERVICIOS
+ActuRegisS.addEventListener('click', async (event)=>{
+            event.preventDefault();
+
+            const serviciosAID = Array.from(Lista_serviciosxd.querySelectorAll('li input[type="checkbox"]')).filter(text=>text.checked).map(text=>text.value);
+            const xhrUPdateS = new XMLHttpRequest();
+            xhrUPdateS.open('POST','/Opciones-servicios',true);
+            xhrUPdateS.setRequestHeader('Content-type','application/json');
+            xhrUPdateS.onreadystatechange = function(){
+                if(xhrUPdateS.readyState===4){
+                    if(xhrUPdateS.status === 200){
+                        console.log('Datos guardados');
+                        ActualiS.style.display = "block";       
+                }
+                else{
+                    console.error('Error al gardar los datos');
+                }
+            }
+        };
+        xhrUPdateS.send(JSON.stringify({serviciosxd: serviciosAID}));
+        });
+
+        //ACTUALIZAR LOS SERVICIOS SELECCIONADAS
+        FormActualizarS.addEventListener('submit', async (event)=>{
+            event.preventDefault();
+
+            const serviLID = Array.from(Lista_serviciosxd.querySelectorAll('li input[type="checkbox"]')).filter(text=>text.checked).map(text=>text.value);
+            console.log(serviLID)
+            const nombre_s=  ActualiS.elements['nombre_s'].value;
+            const tipo_s =  ActualiS.elements['tipo_s'].value;
+            const xhrUPdateS = new XMLHttpRequest();
+            xhrUPdateS.open('POST','/Actualizacion-registros-servicios',true);
+            xhrUPdateS.setRequestHeader('Content-type','application/json');
+            xhrUPdateS.onreadystatechange = function(){
+                if(xhrUPdateS.readyState===4){
+                    if(xhrUPdateS.status === 200){
+                        console.log('Datos guardados');
+                        ActualiS.style.display = "block";       
+                }
+                else{
+                    console.error('Error al gardar los datos');
+                }
+            }
+        };
+        xhrUPdateS.send(JSON.stringify({IDSEV: serviLID, nombre_s: nombre_s, tipo_s: tipo_s}));
+        });
+
+/*----------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        METODOS PARA CERRAR SESION
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------------*/
+
+/* OPCION PARA REALIZAR EL CIERRE DE SESION */
+        cerrSesi.addEventListener("click", () =>{
+            const xhrcerrar = new XMLHttpRequest();
+            xhrcerrar.open('POST','/Cerrar-cession',true);
+            xhrcerrar.onreadystatechange = function(){
+                if(xhrcerrar.readyState===4){
+                    if(xhrcerrar.status === 200){
+
+                        window.location.href='http://127.0.0.1:5500/Vistas/Index.html';
+
+                    }
+                    else{
+                    console.error('Error al borrar la solicitud');
+                }   
+                }          
+            }
+            xhrcerrar.send();
+        });
+        window.onload=function(){
+            window.history.forward();
+        };
+        window.onpageshow = function(event){
+            if(event.persisted){
+                window.location.reload();
+            }
+        }
+    });
+    </script>
+</body>
+</html>

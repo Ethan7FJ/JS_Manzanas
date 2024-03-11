@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Stilos/styles.css">
+    <link rel="shortcout icon" href="Img/logo-simbolo-mc_.svg">
+    <title>Iniciar Sesion</title>
+</head>
+<body>
+    <main>
+        <section id="sesi">
+            <h1 class="tireg2">Ingrese sus datos</h1>
+            <form action="http://localhost:3000/inicio" method="post">
+                <div id="selc2">
+                    <label class="TD2" for="">Tipo de documento</label>
+                    <select class="td2" name="tipo_documento" required>
+                        <option>Cedula de Ciudadania</option>
+                        <option selected>Tarjeta de Identidad</option>
+                        <option>Cedula Extranjera</option>
+                        <option>Documento Extranjero</option>
+                        <option>Pasaporte</option>
+                        <option>Registro Civil</option>
+                    </select>
+                </div>
+                <div id="docu2">
+                    <label class="DC2" for="">Documento</label>
+                    <input class="dc2" name="documento" type="tel" maxlength="15" required>
+                </div>
+                <div id="butn2">
+                    <a href="#"><input class="IS" type="submit" value="Inicair Sesion"></a>
+                    <a href="Index.html"><input class="AT2" type="button" value="Atras"></a>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

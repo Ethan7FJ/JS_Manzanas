@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Stilos/styles.css">
+    <link rel="shortcout icon" href="Img/logo-simbolo-mc_.svg">
+    <title>Registro</title>
+</head>
+<body>
+    <main>
+        <section id="Reg">
+            <h1 class="tireg">Registro de datos</h1>
+            <form action="http://localhost:3000/registro" method="POST">
+                <div id="name">
+                    <label class="NM" for="">Nombre</label>
+                    <input class="nm" type="text" name="nombre" required>
+                </div>
+                <div id="selc">
+                    <label class="TD" for="">Tipo de documento</label>
+                    <select class="td" name="tipo_documento" class="tc" required>
+                        <option>Cedula de Ciudadania</option>
+                        <option selected>Tarjeta de Identidad</option>
+                        <option>Cedula Extranjera</option>
+                        <option>Documento Extranjero</option>
+                        <option>Pasaporte</option>
+                        <option>Registro Civil</option>
+                    </select>
+                </div>
+                <div id="docu">
+                    <label class="DC" for="">Documento</label>
+                    <input class="dc" type="tel" name="documento" maxlength="15" required>
+                </div>
+                     <div id="butn">
+                        <a href="#"><input class="EN" type="submit" value="Enviar"></a>
+                        <a href="Index.html"><input class="AT" type="button" value="Atras"></a>
+                    </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

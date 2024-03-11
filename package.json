@@ -1,0 +1,23 @@
+{
+  "name": "manzana",
+  "version": "1.0.0",
+  "description": "manzanas",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev",
+    "dev": "nodemon Controlers/control.js"
+  },
+  "author": "johan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "tailwindcss": "^3.4.1"
+  }
+}

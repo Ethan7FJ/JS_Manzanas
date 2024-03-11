@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Registro</title>
+</head>
+<body>
+    
+<form action="" id="Actuali" name="Actuali" >
+        <input type="submit" value="Actualizar registro">
+</form>
+<script>
+    document.addEventListener('DOMContentLoaded',()=>{
+            const parms = new URLSearchParams(window.location.search);
+            const admin = parms.get('admin');
+            document.getElementById('administrador').textContent = `${admin}`;
+
+            //ITEMS PARA LA ACTUALIZACION DE DATOS
+                const Actuali = document.getElementById('Actuali');
+                const  NombreUsu = document.getElementById('NombreUsu');
+                const opcionesUSU = document.getElementById('opcionesUSU');
+
+
+                //LISTA
+            Actuali.addEventListener('submit',async (event)=>{
+            event.preventDefault();
+            const xhrLISTA = new XMLHttpRequest();
+            xhrLISTA.open('POST','/Opciones-usuario',true);
+            xhrLISTA.setRequestHeader('Content-type','application/json');
+            xhrLISTA.onreadystatechange = function(){
+                if(xhrLISTA.readyState===4){
+                    if(xhrLISTA.status === 200){
+                        const datj = JSON.parse(xhrLISTA.responseText);
+                        Actuali.innerHTML = datj.registros.map(registros=>`
+                        <select name="NombreUsu" id="NombreUsu" ><option value="${registros}">${registros[0]}-${registros[1]}</option></select>
+                        `).join('');
+                                     
+                }
+                else{
+                    console.error('Error al entrar al servidor');
+                }
+            }
+        };
+        xhrLISTA.send(JSON.stringify({admin}));
+       });
+        
+
+
+    });
+</script>
+</body>
+</html>

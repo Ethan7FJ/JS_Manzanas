@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------------
+SECCION DE EL HEADER INDEX
+----------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+#inrex{
+    position: absolute;
+}
+#inrex .bodizx{
+    background-attachment: fixed;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+#inrex #posterior{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+#posterior{
+    width: 100%;
+    height: 120px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-wrap: wrap;
+}
+.MClog{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+#bat1{
+    margin-left: 60%;
+    margin-top: 2.5%;
+    display: flex;
+}
+#bat2{
+    margin-left: 3%;
+    margin-top: 2.5%;
+    display: flex;
+}
+#posterior #bat1 input{
+    font-size: 40px;
+    border-style: none;
+    background: none;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+}
+#posterior #bat2 input{
+    font-size: 40px;
+    border-style: none;
+    background: none;
+    cursor: pointer;
+    font-family: 'Caveat', cursive;
+}
+
+.MCPin{
+    width: 700px;
+    height: 200px;
+    margin-top: 15%;
+    margin-left: 30%;
+    position: absolute;
+}
+
+.MCinf{
+    width: 700px;
+    height: 350px;
+    margin-top: 25%;
+    margin-left: 33%;
+    position: absolute;
+}
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------------
+SECCION DE EL HEADER REGISTRO
+----------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+#Reg{
+    width: 400px;
+    height: 400px;
+    margin-left: 30%;
+    margin-top: 7%;
+    align-items: center;
+    text-align: center;
+}
+
+.tireg{
+    background-color: rgb(28, 122, 209);
+    font-size: 60px;
+    border-radius: 20px;
+    width: 500px;
+    height: 80px;
+    color: white;
+    margin-left: -2%;
+}
+
+#name{
+    display: flex;
+    flex-direction: column;
+    margin-top: 18%;
+}
+
+.NM{
+    font-size: 17px;
+    padding: 7px;
+    margin-left: -110px;
+}
+.nm{
+    width: 300px;
+    height: 45px;
+    margin-left: 20%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+#selc{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+.TD{
+    font-size: 17px;
+    padding: 7px;
+    margin-left: -20%;
+}
+.td{
+    width: 300px;
+    height: 45px;
+    margin-left: 20%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 17px;
+}
+
+
+#docu{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+.DC{
+    font-size: 17px;
+    padding: 7px;
+    margin-left: -24%;
+}
+.dc{
+    width: 300px;
+    height: 45px;
+    margin-left: 20%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 17px;
+}
+
+
+
+#butn{
+    margin-top: 10%;
+    margin-left: 7%;
+}
+
+.EN{
+    margin: 30px;
+    width: 100px;
+    height: 50px;
+    border-radius: 0px 15px 0px 15px;
+    background-color: red;
+}
+.AT{
+    width: 100px;
+    height: 50px;
+    border-radius: 0px 15px 0px 15px;
+    background-color: red;
+}
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------------
+SECCION DE EL HEADER REGISTRO
+----------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+#sesi{
+    width: 400px;
+    height: 400px;
+    margin-left: 30%;
+    margin-top: 7%;
+    align-items: center;
+    text-align: center;
+}
+
+.tireg2{
+    background-color: rgb(28, 122, 209);
+    font-size: 60px;
+    border-radius: 20px;
+    width: 500px;
+    height: 80px;
+    color: white;
+    margin-left: -2%;
+}
+
+#selc2{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+.TD2{
+    font-size: 17px;
+    padding: 7px;
+    margin-left: -20%;
+}
+.td2{
+    width: 300px;
+    height: 45px;
+    margin-left: 20%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 17px;
+}
+
+
+#docu2{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+.DC2{
+    font-size: 17px;
+    padding: 7px;
+    margin-left: -24%;
+}
+.dc2{
+    width: 300px;
+    height: 45px;
+    margin-left: 20%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 17px;
+}
+
+#butn2{
+    margin-top: 3%;
+    margin-left: 7%;
+}
+
+.IS{
+    margin: 30px;
+    width: 100px;
+    height: 50px;
+    border-radius: 0px 15px 0px 15px;
+    background-color: red;
+}
+.AT2{
+    width: 100px;
+    height: 50px;
+    border-radius: 0px 15px 0px 15px;
+    background-color: red;
+}
+
+/*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+----------------------------------------------------------------
+PAGINA DEL USUARIO
+----------------------------------------------------------------
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
